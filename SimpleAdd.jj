@@ -1,0 +1,40 @@
+options
+{
+}
+PARSER_BEGIN(SimpleAdd)
+public class SimpleAdd
+{
+}
+PARSER_END(SimpleAdd)
+SKIP :
+{
+    " "
+|   "\r"
+|   "\t"
+|   "\n"
+}
+TOKEN:
+{
+    < NUMBER: (["0"-"9"])+  >
+}
+
+int expr():
+{
+	int leftValue ;
+        int rightValue ;
+}
+{
+	leftValue = num()
+    	"+"
+    	rightValue = num()
+	{ return leftValue+rightValue; }
+}
+
+int num():
+{
+	Token t;
+}
+{
+    t = <NUMBER> { return Integer.parseInt(t.toString()); }
+}
+
